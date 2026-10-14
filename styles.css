@@ -13,3 +13,7 @@ body{font-size:18px}.wordmark{font-size:23px}.nav-links{font-size:16px;gap:22px}
 @media(max-width:760px){body{font-size:17px}.nav{height:auto;min-height:70px;padding-block:14px;flex-wrap:wrap}.nav-links{font-size:14px;gap:14px;flex-wrap:wrap}.hero-subtitle{font-size:19px}.authors{font-size:19px}.affiliations{font-size:14px}.hero-statement{font-size:23px}.news{padding:22px 20px}.news-heading{gap:12px;flex-wrap:wrap}.news p{font-size:16px}.section-intro,.abstract-copy p,.selection-layout p,.resource-list p{font-size:17px}.citation pre{font-size:13px;margin-right:0}}
 
 #generation .step-label{color:#000}
+
+/* Keep the overview title close to the preceding News panel. */
+#overview{margin-top:28px;padding-top:36px}
+@media(max-width:760px){#overview{margin-top:24px;padding-top:28px}}
