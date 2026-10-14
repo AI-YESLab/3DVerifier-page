@@ -14,6 +14,6 @@ body{font-size:18px}.wordmark{font-size:23px}.nav-links{font-size:16px;gap:22px}
 
 #generation .step-label{color:#000}
 
-/* Reduce only the space from the overview divider to its title. */
-#overview{padding-top:36px}
-@media(max-width:760px){#overview{padding-top:28px}}
+/* Section eyebrows were removed: use consistent divider-to-title spacing. */
+.section{padding-top:36px}
+@media(max-width:760px){.section{padding-top:28px}}
