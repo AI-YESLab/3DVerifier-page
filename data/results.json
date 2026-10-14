@@ -1,0 +1,110 @@
+{
+  "source": "Supplied arXiv manuscript; Table 1, Table E8, Table G2, Table 4",
+  "models": [
+    {
+      "name": "GPT-6 Astra",
+      "overall": 69.4,
+      "explanation": 65.8,
+      "triplet": 46.5,
+      "expTriplet": 40.5
+    },
+    {
+      "name": "Gemini-3.8-Flash",
+      "overall": 68.4,
+      "explanation": 57.8,
+      "triplet": 49.6,
+      "expTriplet": 40.0
+    },
+    {
+      "name": "GPT-5.6-Sol",
+      "overall": 64.9,
+      "explanation": 59.6,
+      "triplet": 36.4,
+      "expTriplet": 29.8
+    },
+    {
+      "name": "Gemma-4-31B",
+      "overall": 62.6,
+      "explanation": 52.2,
+      "triplet": 26.0,
+      "expTriplet": 18.4
+    },
+    {
+      "name": "Qwen3.5-122B-A10B",
+      "overall": 61.6,
+      "explanation": 48.9,
+      "triplet": 24.4,
+      "expTriplet": 15.1
+    },
+    {
+      "name": "Qwen3.6-35B-A3B",
+      "overall": 59.5,
+      "explanation": 51.3,
+      "triplet": 9.8,
+      "expTriplet": 7.3
+    },
+    {
+      "name": "InternVL3.5-38B",
+      "overall": 56.7,
+      "explanation": 44.5,
+      "triplet": 13.8,
+      "expTriplet": 5.9
+    },
+    {
+      "name": "GLM-4.6V-106B",
+      "overall": 55.0,
+      "explanation": 50.9,
+      "triplet": 8.0,
+      "expTriplet": 3.9
+    },
+    {
+      "name": "OmniVerifier-7B",
+      "overall": 52.0,
+      "explanation": 30.0,
+      "triplet": 6.2,
+      "expTriplet": 2.8
+    },
+    {
+      "name": "Qwen2.5-VL-7B-Instruct",
+      "overall": 50.2,
+      "explanation": 22.1,
+      "triplet": 2.4,
+      "expTriplet": 0.5
+    }
+  ],
+  "human": {
+    "overall": 87.8,
+    "astra": 66.2,
+    "gap": 21.6
+  },
+  "explanationCheck": {
+    "failed": 3462,
+    "total": 9488,
+    "percent": 36.5,
+    "models": 10
+  },
+  "selection": [
+    {
+      "name": "Random",
+      "full": 26.7,
+      "strict": 16.6
+    },
+    {
+      "name": "GPT-6 Astra",
+      "full": 55.0,
+      "strict": 45.0
+    },
+    {
+      "name": "Human oracle",
+      "full": 90.0,
+      "strict": 85.0
+    }
+  ],
+  "refinement": {
+    "full": 8,
+    "noSevereDefect": 7,
+    "sourceFaithful": 6,
+    "total": 8,
+    "parallelOracle": 3
+  }
+}

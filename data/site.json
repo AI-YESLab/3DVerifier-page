@@ -1,0 +1,37 @@
+{
+  "title": "Grounding Generative Verification in 3D Content",
+  "project": "3DVerifier",
+  "authors": [
+    {
+      "name": "Shuanglin Li",
+      "affiliations": [
+        1,
+        2
+      ],
+      "url": "https://huixingruo.github.io/personal-homepage/"
+    },
+    {
+      "name": "Jiaying Lin",
+      "affiliations": [
+        3
+      ],
+      "url": "https://jiaying.link/"
+    },
+    {
+      "name": "Shuquan Ye",
+      "affiliations": [
+        2
+      ],
+      "url": "https://shuquanye.com/"
+    }
+  ],
+  "links": {
+    "paper": "assets/paper.pdf?v=20261015-b44c1b2e",
+    "arxiv": null,
+    "code": null,
+    "benchmark": null,
+    "training": "mailto:jzgkpl84@gmail.com?subject=3DVerifier%20training%20resource%20request"
+  },
+  "citation": null,
+  "contactEmail": "jzgkpl84@gmail.com"
+}

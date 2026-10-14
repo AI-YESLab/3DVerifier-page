@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Object",
+    "count": 306,
+    "slug": "object",
+    "claim": "Two teddy bears.",
+    "answer": true,
+    "explanation": "Two seated figures.",
+    "image": "assets/task-object.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Part",
+    "count": 306,
+    "slug": "part",
+    "claim": "Oval finger loops.",
+    "answer": true,
+    "explanation": "Two oval openings.",
+    "image": "assets/task-part.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Material",
+    "count": 324,
+    "slug": "material",
+    "claim": "Blue-on-white pattern.",
+    "answer": true,
+    "explanation": "Blue decoration.",
+    "image": "assets/task-material.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Part Grounding",
+    "count": 338,
+    "slug": "grounding",
+    "claim": "The highlighted region is the lens.",
+    "answer": true,
+    "explanation": "The lens region is marked in red.",
+    "image": "assets/task-grounding.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Part Relation",
+    "count": 304,
+    "slug": "relation",
+    "claim": "The parts are perpendicular.",
+    "answer": false,
+    "explanation": "The armrests are parallel.",
+    "image": "assets/task-relation.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Affordance Region",
+    "count": 409,
+    "slug": "affordance",
+    "claim": "The highlighted region can be grasped.",
+    "answer": true,
+    "explanation": "The curved handle can be grasped.",
+    "image": "assets/task-affordance.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Grasp Validity",
+    "count": 200,
+    "slug": "grasp",
+    "claim": "The grasp is valid.",
+    "answer": true,
+    "explanation": "The jaws oppose across the body.",
+    "image": "assets/task-grasp.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Identity Preservation",
+    "count": 200,
+    "slug": "identity",
+    "claim": "The edit preserves identity.",
+    "answer": false,
+    "explanation": "The edited face has a wider lower face.",
+    "image": "assets/task-identity.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Fine-grained Geometry",
+    "count": 60,
+    "slug": "finegeo",
+    "claim": "The candidate matches the reference geometry.",
+    "answer": false,
+    "explanation": "The housing narrows inward.",
+    "image": "assets/task-finegeo.webp",
+    "source": "Figure 3, p.5"
+  },
+  {
+    "name": "Motion Understanding",
+    "count": 134,
+    "slug": "motion",
+    "claim": "Jump forward and land.",
+    "answer": true,
+    "explanation": "Takeoff, flight, and landing.",
+    "image": "assets/task-motion.webp",
+    "source": "Figure 3, p.5"
+  }
+]

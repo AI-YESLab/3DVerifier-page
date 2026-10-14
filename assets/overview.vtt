@@ -1,0 +1,197 @@
+WEBVTT
+
+1
+00:00:00.280 --> 00:00:03.489 line:90%
+Modern 3D generators create convincing objects.
+
+2
+00:00:03.789 --> 00:00:07.489 line:90%
+But can we verify that they satisfy their intended requirements?
+
+3
+00:00:07.789 --> 00:00:12.301 line:90%
+We present Grounding Generative Verification in 3D Content.
+
+4
+00:00:13.313 --> 00:00:15.097 line:90%
+Consider this bear animation.
+
+5
+00:00:15.397 --> 00:00:18.214 line:90%
+GPT-6 Astra judges it perfect.
+
+6
+00:00:18.514 --> 00:00:22.514 line:90%
+Yet the bear tips almost rigidly, with little movement to brace its fall.
+
+7
+00:00:22.814 --> 00:00:25.747 line:90%
+Human reviewers identify unnatural motion.
+
+8
+00:00:26.047 --> 00:00:29.609 line:90%
+Recognizing the action is not the same as verifying it.
+
+9
+00:00:30.613 --> 00:00:33.376 line:90%
+A similar failure appears in 3D editing.
+
+10
+00:00:33.676 --> 00:00:39.562 line:90%
+The edited face has a different chin and outline, but Astra still accepts the identity-preservation claim.
+
+11
+00:00:39.862 --> 00:00:43.231 line:90%
+A plausible edit can violate an important requirement.
+
+12
+00:00:44.213 --> 00:00:48.245 line:90%
+The initial generation turns the compact house into a long building.
+
+13
+00:00:48.545 --> 00:00:52.243 line:90%
+The first round restores the facade, but leaves extra chimneys.
+
+14
+00:00:52.543 --> 00:00:57.128 line:90%
+The second round restores a single chimney and satisfies all seven facts.
+
+15
+00:00:59.547 --> 00:01:13.594 line:90%
+We introduce 3DVerifierBench: 2,581 human-reviewed examples across ten tasks, covering objects, parts, materials, grounding, relations, affordances, grasps, identity, geometry, and motion.
+
+16
+00:01:13.894 --> 00:01:18.257 line:90%
+Each task asks whether the presented evidence supports a specific requirement.
+
+17
+00:01:19.247 --> 00:01:23.801 line:90%
+For example, the highlighted region here is the support box beneath the cushion.
+
+18
+00:01:24.101 --> 00:01:27.121 line:90%
+Astra accepts the claim that it is the cushion itself.
+
+19
+00:01:27.421 --> 00:01:34.203 line:90%
+Reliable verification must identify the correct part, rather than rely on a plausible object description.
+
+20
+00:01:35.213 --> 00:01:38.605 line:90%
+We also test consistency through linked counterfactuals.
+
+21
+00:01:38.905 --> 00:01:45.795 line:90%
+Starting from a true claim, we either change the claim while fixing the evidence, or change the candidate while fixing the claim.
+
+22
+00:01:46.095 --> 00:01:49.295 line:90%
+A triplet passes only when all three answers are correct.
+
+23
+00:01:50.280 --> 00:01:54.385 line:90%
+Our pipeline begins with multi-view evidence and reviewed true claims.
+
+24
+00:01:54.685 --> 00:01:58.331 line:90%
+Specification-side counterfactuals modify requirements,
+
+25
+00:01:58.511 --> 00:02:02.433 line:90%
+while candidate-side counterfactuals modify 3D evidence,
+
+26
+00:02:02.613 --> 00:02:05.931 line:90%
+sometimes through 2D editing and 3D generation.
+
+27
+00:02:06.231 --> 00:02:11.839 line:90%
+Parametric identity synthesis and expert-guided geometry and motion complete the coverage.
+
+28
+00:02:12.139 --> 00:02:16.555 line:90%
+Expert review yields the 2,581-example benchmark
+
+29
+00:02:16.855 --> 00:02:21.878 line:90%
+and a source-disjoint training resource of 14,126 examples.
+
+30
+00:02:22.880 --> 00:02:25.462 line:90%
+Current models remain far behind humans.
+
+31
+00:02:25.762 --> 00:02:34.935 line:90%
+On the same 400 examples, humans achieve 87.8 percent, compared with 66.2 percent for GPT-6 Astra.
+
+32
+00:02:35.235 --> 00:02:42.658 line:90%
+Across ten models, 36.5 percent of correct rejections also fail the reference-semantic explanation check.
+
+33
+00:02:42.958 --> 00:02:46.925 line:90%
+A correct answer does not always identify the right contradiction.
+
+34
+00:02:47.913 --> 00:02:49.976 line:90%
+What could better verification enable?
+
+35
+00:02:50.276 --> 00:02:57.550 line:90%
+For each of forty inputs, we generate eight candidates with Pixal3D and eight with Hunyuan3D-2.1.
+
+36
+00:02:57.850 --> 00:03:07.299 line:90%
+Complete factual success reaches 26.7 percent with random selection, 55 percent with Astra, and 90 percent with a human oracle.
+
+37
+00:03:08.280 --> 00:03:11.850 line:90%
+Selection cannot fix requirements missing from every candidate.
+
+38
+00:03:12.150 --> 00:03:15.021 line:90%
+So we explore human-guided recursive refinement.
+
+39
+00:03:15.321 --> 00:03:18.988 line:90%
+This initial 3D asset satisfies six of seven facts.
+
+40
+00:03:19.288 --> 00:03:22.689 line:90%
+The side grille is missing, and a stray black mark remains.
+
+41
+00:03:22.989 --> 00:03:25.402 line:90%
+The human verifier provides a correction.
+
+42
+00:03:26.413 --> 00:03:32.568 line:90%
+First, we revise the 2D condition and regenerate the asset with Hunyuan3D-2.1.
+
+43
+00:03:32.868 --> 00:03:36.463 line:90%
+The stray mark disappears, but the grille remains incomplete.
+
+44
+00:03:36.763 --> 00:03:42.523 line:90%
+Verification still finds only six of seven requirements satisfied, so another edit is needed.
+
+45
+00:03:43.513 --> 00:03:49.890 line:90%
+A targeted texture edit with VecSet-Edit restores the dense side mesh, achieving seven of seven facts.
+
+46
+00:03:50.190 --> 00:04:00.270 line:90%
+Across eight human-guided cases, all satisfy the seven requirements; seven final assets avoid severe defects, and six also preserve source fidelity.
+
+47
+00:04:00.570 --> 00:04:04.283 line:90%
+This illustrates the value of actionable verification feedback.
+
+48
+00:04:05.280 --> 00:04:12.201 line:90%
+3DVerifierBench measures verification gaps, builds structured supervision, and studies reliable feedback.
+
+49
+00:04:12.501 --> 00:04:17.067 line:90%
+Together, these contributions ground generative verification in 3D content.
