@@ -199,8 +199,14 @@ const sections = [...document.querySelectorAll('main>section[id]')];
 const navObserver = new IntersectionObserver(entries => { for (const e of entries) if(e.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>{if(a.hash===`#${e.target.id}`) a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});} },{rootMargin:'-10% 0px -65% 0px'});
 sections.forEach(s=>navObserver.observe(s));
 
+$('copy-citation').addEventListener('click', async () => {
+ const text = $('citation-code').textContent;
+ try { await navigator.clipboard.writeText(text); $('copy-status').textContent = 'BibTeX copied.'; }
+ catch { const input = document.createElement('textarea'); input.value = text; input.style.position = 'fixed'; input.style.opacity = '0'; document.body.append(input); input.select(); const copied = document.execCommand('copy'); input.remove(); $('copy-status').textContent = copied ? 'BibTeX copied.' : 'Select and copy the BibTeX above.'; }
+});
+
 Promise.all([json('tasks'),json('gallery'),json('results'),json('site')]).then(([tasks,gallery,results,site]) => {
  site.authors.forEach((author,i)=>{if(author.url){const span=document.querySelectorAll('.authors > span')[i];const a=document.createElement('a');a.href=author.url;a.target='_blank';a.rel='noopener';a.textContent=author.name;span.firstChild.replaceWith(a);}});
  renderTasks(tasks); renderCarousel(gallery); renderResults(results);
- for (const key of ['code','benchmark','training']) { const url=site.links[key]; if(url){const old=document.querySelector(`[data-resource="${key}"]`);const a=document.createElement('a');a.href=url;a.textContent=key==='training'?'Email the authors to request access ↗':'Open resource ↗';if(!url.startsWith('mailto:')){a.target='_blank';a.rel='noopener';}old.replaceWith(a);const hero=document.querySelector(`[data-hero-resource="${key}"]`);if(hero){hero.href=url;hero.target='_blank';hero.rel='noopener';hero.querySelector('.button-note')?.remove();}}}
+ for (const key of ['code','benchmark','training']) { const url=site.links[key]; if(url){const old=document.querySelector(`[data-resource="${key}"]`);const a=document.createElement('a');a.href=url;a.textContent=key==='training'?'Email the authors to request access ↗':key==='benchmark'?'View on Hugging Face ↗':'Open resource ↗';if(!url.startsWith('mailto:')){a.target='_blank';a.rel='noopener';}old.replaceWith(a);const hero=document.querySelector(`[data-hero-resource="${key}"]`);if(hero){hero.href=url;hero.classList.remove('pending-link');hero.target='_blank';hero.rel='noopener';hero.querySelector('.button-note')?.remove();}}}
 }).catch(err=>{console.error(err);const p=document.createElement('p');p.className='load-error wrap';p.textContent='Interactive data could not be loaded. Please reload the page or open the paper PDF.';document.querySelector('main').prepend(p);});

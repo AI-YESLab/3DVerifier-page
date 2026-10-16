@@ -5,7 +5,7 @@
   <title>3DVerifier · Grounding Generative Verification in 3D Content</title>
   <meta name="description" content="3DVerifier: 2,581 human-reviewed examples across ten tasks. Grounding generative verification in 3D content and studying verification feedback for generation.">
   <meta name="theme-color" content="#ffffff"><link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261015-section-spacing"><link rel="stylesheet" href="examples.css"><script src="app.js?v=20261015-reflect-title" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261016-resources"><link rel="stylesheet" href="examples.css"><script src="app.js?v=20261016-resources" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -16,7 +16,7 @@
   <h1 id="paper-title">Grounding Generative Verification<br> in 3D Content</h1>
   <p class="authors"><span>Shuanglin Li<sup>1,2</sup></span><span>Jiaying Lin<sup>3</sup></span><span>Shuquan Ye<sup>2</sup></span></p>
   <div class="affiliations"><span><sup>1</sup> Southeast University</span><span><sup>2</sup> Shenzhen Loop Area Institute</span><span><sup>3</sup> The Hong Kong University of Science and Technology</span></div>
-  <div class="hero-links"><a class="button primary" href="assets/paper.pdf?v=20261015-b44c1b2e" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2h7l4 4v12H5zM12 2v5h4M8 11h5M8 14h5"/></svg>Paper <span class="button-note">PDF</span></a><a class="button" href="#overview"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 9 6-9 6z"/></svg>Video</a><a class="button pending-link" data-hero-resource="code" href="#resources">Code <span class="button-note">Pending</span></a><a class="button pending-link" data-hero-resource="benchmark" href="#resources">Data <span class="button-note">Pending</span></a></div>
+  <div class="hero-links"><a class="button primary" href="https://arxiv.org/abs/2610.22360" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2h7l4 4v12H5zM12 2v5h4M8 11h5M8 14h5"/></svg>Paper <span class="button-note">arXiv</span></a><a class="button" href="#overview"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 9 6-9 6z"/></svg>Video</a><a class="button pending-link" data-hero-resource="code" href="#resources">Code <span class="button-note">Pending</span></a><a class="button" data-hero-resource="benchmark" href="https://huggingface.co/datasets/AI-YesLab/3DVerifierBench" target="_blank" rel="noopener">Benchmark</a></div>
   <p class="hero-statement">Can a model tell <em>what is wrong</em> with a 3D asset?</p>
   <p class="hero-subtitle"><span class="contribution benchmark">A benchmark</span>, <span class="contribution training">a training resource</span>, and <span class="contribution reflect">a study of how to reflect on 3D generation</span>.</p>
 </section>
@@ -24,14 +24,14 @@
 <section class="teaser wrap" aria-label="Two real verification failures">
  <div class="teaser-grid">
   <article class="teaser-case">
-   <div class="case-heading"><span class="eyebrow">01 / MOTION UNDERSTANDING</span><a class="quiet-link" href="assets/paper.pdf?v=20261015-b44c1b2e#page=2" target="_blank" rel="noopener">Fig. 1 ↗</a></div>
+   <div class="case-heading"><span class="eyebrow">01 / MOTION UNDERSTANDING</span><a class="quiet-link" href="assets/paper.pdf?v=20261016-59c42905#page=2" target="_blank" rel="noopener">Fig. 1 ↗</a></div>
    <h2>A plausible action.<br> But an unnatural motion.</h2>
    <div class="motion-frame"><video id="motion-video" poster="assets/motion-poster.webp" controls playsinline loop muted preload="none" aria-label="Original bear collapse animation"><source src="assets/motion-fall.mp4" type="video/mp4"></video></div>
    <div class="requirement-field"><span class="field-label"><img src="assets/icons/requirement.png" alt="" width="18" height="18">Requirement</span><p>“A bear tilts its head up, then collapses rightward, likely from death.”</p></div><div class="response-pair"><div class="example-response"><h4><img src="assets/icons/astra.svg" alt="" width="24" height="24">GPT-6 Astra</h4><div class="answer-field"><span class="field-label"><img src="assets/icons/answer.svg" alt="" width="18" height="18">Answer</span><strong class="incorrect">Perfect<span class="judgment-mark" role="img" aria-label="Incorrect judgment">✕</span></strong></div><div class="explanation-field"><span class="field-label"><img src="assets/icons/explanation.svg" alt="" width="18" height="18">Explanation</span><p>“The bear slightly raises its head, then tips and collapses onto its right side, remaining motionless in the final frames.”</p></div></div><div class="example-response"><h4><img src="assets/icons/human.svg" alt="" width="24" height="24">Human reference</h4><div class="answer-field"><span class="field-label"><img src="assets/icons/answer.svg" alt="" width="18" height="18">Answer</span><strong class="correct">Unnatural motion<span class="judgment-mark" role="img" aria-label="Correct judgment">✓</span></strong></div><div class="explanation-field"><span class="field-label"><img src="assets/icons/explanation.svg" alt="" width="18" height="18">Explanation</span><p>After lifting its head, the bear tips as a nearly rigid body, with little leg bracing or impact response.</p></div></div></div>
    <button class="text-button" data-lightbox="assets/motion-evidence.webp" data-caption="The 16-frame sheet used for the Astra prediction. The playable video shows the original motion.">Inspect the 16-frame evidence <span aria-hidden="true">↗</span></button>
   </article>
   <article class="teaser-case">
-   <div class="case-heading"><span class="eyebrow">02 / IDENTITY PRESERVATION</span><a class="quiet-link" href="assets/paper.pdf?v=20261015-b44c1b2e#page=2" target="_blank" rel="noopener">Fig. 1 ↗</a></div>
+   <div class="case-heading"><span class="eyebrow">02 / IDENTITY PRESERVATION</span><a class="quiet-link" href="assets/paper.pdf?v=20261016-59c42905#page=2" target="_blank" rel="noopener">Fig. 1 ↗</a></div>
    <h2>A changed expression.<br> A changed identity, too.</h2>
    <div class="identity-pair"><figure><img id="identity-source" src="assets/identity-a-0.webp" width="512" height="512" alt="Original face, front view"><figcaption>Source</figcaption></figure><figure><img id="identity-edited" src="assets/identity-b-0.webp" width="512" height="512" alt="Edited face, front view"><figcaption>Edited</figcaption></figure></div>
    <div class="view-control"><label for="identity-view">View <output id="view-number">1 / 8</output></label><input id="identity-view" type="range" min="0" max="7" value="0" aria-label="Change both faces to the same view"><button id="identity-toggle" class="small-button" aria-pressed="false">Rotate views</button></div>
@@ -40,7 +40,7 @@
  </div>
 </section>
 
-<section id="news" class="news wrap" aria-labelledby="news-title"><div class="news-heading"><h2 id="news-title">News</h2><span class="news-badge">Research updates</span></div><p><strong>3DVerifierBench</strong> covers ten verification tasks and 2,581 human-reviewed examples. <a href="#benchmark">Explore the benchmark →</a></p><p>Benchmark download coming soon. To obtain the training resource, please email <a href="mailto:jzgkpl84@gmail.com?subject=3DVerifier%20training%20resource%20request">jzgkpl84@gmail.com</a>.</p></section>
+<section id="news" class="news wrap" aria-labelledby="news-title"><div class="news-heading"><h2 id="news-title">News</h2><span class="news-badge">Research updates</span></div><p><strong>3DVerifierBench</strong> covers ten verification tasks and 2,581 human-reviewed examples. <a href="#benchmark">Explore the benchmark →</a></p><p>The <a href="https://huggingface.co/datasets/AI-YesLab/3DVerifierBench" target="_blank" rel="noopener">benchmark is now available on Hugging Face</a>, and the <a href="https://arxiv.org/abs/2610.22360" target="_blank" rel="noopener">paper is on arXiv</a>. To obtain the training resource, please email <a href="mailto:jzgkpl84@gmail.com?subject=3DVerifier%20training%20resource%20request">jzgkpl84@gmail.com</a>.</p></section>
 
 <section id="overview" class="section wrap">
  <div class="section-heading"><div><h2>Watch the overview</h2></div></div>
@@ -67,9 +67,9 @@
 </section>
 
 <section id="results" class="section wrap">
- <div class="section-heading"><div><h2>There is still a verification gap.</h2></div><a class="quiet-link" href="assets/paper.pdf?v=20261015-b44c1b2e#page=7" target="_blank" rel="noopener">Tables 1, E8 &amp; G2 ↗</a></div>
+ <div class="section-heading"><div><h2>There is still a verification gap.</h2></div><a class="quiet-link" href="assets/paper.pdf?v=20261016-59c42905#page=7" target="_blank" rel="noopener">Tables 1, E8 &amp; G2 ↗</a></div>
  <div class="result-headlines"><div><strong>87.8<span>%</span></strong><span>Human</span></div><div><strong>69.4<span>%</span></strong><span>GPT-6 Astra · benchmark</span></div><div><strong>66.2<span>%</span></strong><span>GPT-6 Astra · human comparison</span></div></div>
- <div class="results-layout"><div class="ranking"><div class="chart-top"><h3 id="chart-title">Verification performance</h3><select id="metric-select" aria-label="Results metric"><option value="overall">Overall accuracy</option><option value="explanation">Explanation-aware</option><option value="triplet">Triplet consistency</option><option value="expTriplet">Explanation-aware triplets</option></select></div><div id="ranking-chart" class="bar-chart" aria-live="polite"></div><p id="metric-description" class="meta">Overall accuracy (OA): mean task-level balanced accuracy.</p></div><aside class="result-insight"><span class="eyebrow">BEYOND THE ANSWER</span><strong class="large-number">36.5<span>%</span></strong><h3>A correct rejection can still miss the reason.</h3><p>Across ten models, 3,462 of 9,488 correct rejections fail the reference-semantic explanation check.</p><p class="meta">The check tests whether the explanation matches the reference contradiction. Independent human review agrees with the Judge on 91.0% of 300 checked explanations.</p><a class="text-button" href="assets/paper.pdf?v=20261015-b44c1b2e#page=8" target="_blank" rel="noopener">Read the explanation analysis ↗</a></aside></div>
+ <div class="results-layout"><div class="ranking"><div class="chart-top"><h3 id="chart-title">Verification performance</h3><select id="metric-select" aria-label="Results metric"><option value="overall">Overall accuracy</option><option value="explanation">Explanation-aware</option><option value="triplet">Triplet consistency</option><option value="expTriplet">Explanation-aware triplets</option></select></div><div id="ranking-chart" class="bar-chart" aria-live="polite"></div><p id="metric-description" class="meta">Overall accuracy (OA): mean task-level balanced accuracy.</p></div><aside class="result-insight"><span class="eyebrow">BEYOND THE ANSWER</span><strong class="large-number">36.5<span>%</span></strong><h3>A correct rejection can still miss the reason.</h3><p>Across ten models, 3,462 of 9,488 correct rejections fail the reference-semantic explanation check.</p><p class="meta">The check tests whether the explanation matches the reference contradiction. Independent human review agrees with the Judge on 91.0% of 300 checked explanations.</p><a class="text-button" href="assets/paper.pdf?v=20261016-59c42905#page=8" target="_blank" rel="noopener">Read the explanation analysis ↗</a></aside></div>
  <details class="data-table-details"><summary>View the numerical results <span aria-hidden="true">+</span></summary><div class="table-scroll"><table><caption>Scores reported in the paper (%)</caption><thead><tr><th scope="col">Model / evaluator</th><th scope="col">Overall</th><th scope="col">ExpOA</th><th scope="col">Triplet</th><th scope="col">ExpTriplet</th></tr></thead><tbody id="results-table"></tbody></table></div></details>
 </section>
 
@@ -89,12 +89,20 @@
 
 <section id="resources" class="section wrap resources">
  <div class="section-heading"><div><h2>Resources</h2></div></div>
- <div class="resource-list"><div><h3>Paper</h3><p>Grounding Generative Verification in 3D Content</p><a href="assets/paper.pdf?v=20261015-b44c1b2e" target="_blank" rel="noopener">Read manuscript PDF ↗</a></div><div><h3>Evaluation benchmark</h3><p>2,581 human-reviewed examples across ten tasks.</p><span class="release-status" data-resource="benchmark">Download coming soon</span></div><div><h3>Training resource</h3><p>14,126 examples across seven tasks, with contradiction explanations and linked counterfactuals.</p><span class="release-status" data-resource="training">Please email the authors to obtain this.</span></div><div><h3>Code &amp; evaluation</h3><p>Evaluation scripts, task definitions, schemas, and provenance.</p><span class="release-status" data-resource="code">Repository link pending</span></div></div>
- <div class="citation"><h3>Citation</h3></div>
+ <div class="resource-list"><div><h3>Paper</h3><p>Grounding Generative Verification in 3D Content</p><a href="https://arxiv.org/abs/2610.22360" target="_blank" rel="noopener">Read on arXiv ↗</a></div><div><h3>Evaluation benchmark</h3><p>2,581 human-reviewed examples across ten tasks.</p><a data-resource="benchmark" href="https://huggingface.co/datasets/AI-YesLab/3DVerifierBench" target="_blank" rel="noopener">View on Hugging Face ↗</a></div><div><h3>Training resource</h3><p>14,126 examples across seven tasks, with contradiction explanations and linked counterfactuals.</p><span class="release-status" data-resource="training">Please email the authors to obtain this.</span></div><div><h3>Code &amp; evaluation</h3><p>Evaluation scripts, task definitions, schemas, and provenance.</p><span class="release-status" data-resource="code">Repository link pending</span></div></div>
+ <div class="citation"><div><h3>Citation</h3><pre><code id="citation-code">@misc{li2026groundinggenerativeverification3d,
+  title={Grounding Generative Verification in 3D Content},
+  author={Shuanglin Li and Jiaying Lin and Shuquan Ye},
+  year={2026},
+  eprint={2610.22360},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2610.22360},
+}</code></pre></div><button id="copy-citation" class="button" type="button">Copy BibTeX</button><span id="copy-status" role="status" aria-live="polite"></span></div>
  <p class="license-note">Source assets and annotations remain subject to their upstream licenses. See Appendix F for the resource scope and provenance.</p>
 </section>
 </main>
 <footer class="wrap footer"><a class="wordmark" href="#">3DVerifier<span class="brand-dot">.</span></a><span>Grounding generative verification in 3D content.</span><a href="#" class="quiet-link">Back to top ↑</a></footer>
 <dialog id="lightbox" aria-labelledby="lightbox-caption"><button id="lightbox-close" class="icon-button close" aria-label="Close enlarged figure">×</button><img id="lightbox-image" alt=""><p id="lightbox-caption"></p><a id="lightbox-original" target="_blank" rel="noopener">Open full-size image ↗</a></dialog>
-<noscript><p class="wrap">Interactive examples require JavaScript. All figures and results are available in the <a href="assets/paper.pdf?v=20261015-b44c1b2e">paper PDF</a>.</p></noscript>
+<noscript><p class="wrap">Interactive examples require JavaScript. All figures and results are available in the <a href="assets/paper.pdf?v=20261016-59c42905">paper PDF</a>.</p></noscript>
 </body></html>

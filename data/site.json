@@ -26,12 +26,13 @@
     }
   ],
   "links": {
-    "paper": "assets/paper.pdf?v=20261015-b44c1b2e",
-    "arxiv": null,
+    "paper": "https://arxiv.org/abs/2610.22360",
+    "arxiv": "https://arxiv.org/abs/2610.22360",
     "code": null,
-    "benchmark": null,
-    "training": "mailto:jzgkpl84@gmail.com?subject=3DVerifier%20training%20resource%20request"
+    "benchmark": "https://huggingface.co/datasets/AI-YesLab/3DVerifierBench",
+    "training": "mailto:jzgkpl84@gmail.com?subject=3DVerifier%20training%20resource%20request",
+    "pdf": "https://arxiv.org/pdf/2610.22360"
   },
-  "citation": null,
+  "citation": "@misc{li2026groundinggenerativeverification3d,\n  title={Grounding Generative Verification in 3D Content},\n  author={Shuanglin Li and Jiaying Lin and Shuquan Ye},\n  year={2026},\n  eprint={2610.22360},\n  archivePrefix={arXiv},\n  primaryClass={cs.CV},\n  url={https://arxiv.org/abs/2610.22360},\n}",
   "contactEmail": "jzgkpl84@gmail.com"
 }
