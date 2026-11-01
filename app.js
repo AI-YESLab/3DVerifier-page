@@ -210,3 +210,11 @@ Promise.all([json('tasks'),json('gallery'),json('results'),json('site')]).then((
  renderTasks(tasks); renderCarousel(gallery); renderResults(results);
  for (const key of ['code','benchmark','training']) { const url=site.links[key]; if(url){const old=document.querySelector(`[data-resource="${key}"]`);const a=document.createElement('a');a.href=url;a.textContent=key==='training'?'Email the authors to request access ↗':key==='benchmark'?'View on Hugging Face ↗':'Open resource ↗';if(!url.startsWith('mailto:')){a.target='_blank';a.rel='noopener';}old.replaceWith(a);const hero=document.querySelector(`[data-hero-resource="${key}"]`);if(hero){hero.href=url;hero.classList.remove('pending-link');hero.target='_blank';hero.rel='noopener';hero.querySelector('.button-note')?.remove();}}}
 }).catch(err=>{console.error(err);const p=document.createElement('p');p.className='load-error wrap';p.textContent='Interactive data could not be loaded. Please reload the page or open the paper PDF.';document.querySelector('main').prepend(p);});
+
+// Gentle pointer tilt for the hero wordmark.
+const mark = document.querySelector('.project-mark');
+if (mark && matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches) {
+ const hero = mark.closest('.hero');
+ hero.addEventListener('pointermove', e => { const r = mark.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; mark.style.setProperty('--ry', `${Math.max(-1, Math.min(1, x)) * 10}deg`); mark.style.setProperty('--rx', `${Math.max(-1, Math.min(1, y)) * -8}deg`); });
+ hero.addEventListener('pointerleave', () => { mark.style.setProperty('--ry', '0deg'); mark.style.setProperty('--rx', '0deg'); });
+}
