@@ -12,7 +12,18 @@
     "model_answer": "Yes",
     "model_explanation": "It shows six alternating cake and cream layers.",
     "human_answer": "No",
-    "human_explanation": "It has seven layers."
+    "human_explanation": "It has seven layers.",
+    "keys": {
+      "claim": [
+        "six-layer"
+      ],
+      "model": [
+        "six alternating"
+      ],
+      "human": [
+        "seven layers"
+      ]
+    }
   },
   {
     "id": "G02",
@@ -27,7 +38,18 @@
     "model_answer": "Yes",
     "model_explanation": "The handle forms a rounded arch.",
     "human_answer": "No",
-    "human_explanation": "There is no handle."
+    "human_explanation": "There is no handle.",
+    "keys": {
+      "claim": [
+        "arched shape"
+      ],
+      "model": [
+        "rounded arch"
+      ],
+      "human": [
+        "no handle"
+      ]
+    }
   },
   {
     "id": "G03",
@@ -42,7 +64,19 @@
     "model_answer": "Yes",
     "model_explanation": "It has a polished, stone-like appearance.",
     "human_answer": "No",
-    "human_explanation": "It looks metallic and reflective."
+    "human_explanation": "It looks metallic and reflective.",
+    "keys": {
+      "claim": [
+        "stone-like appearance",
+        "dusty beige"
+      ],
+      "model": [
+        "polished, stone-like"
+      ],
+      "human": [
+        "metallic and reflective"
+      ]
+    }
   },
   {
     "id": "G04",
@@ -57,7 +91,18 @@
     "model_answer": "Yes",
     "model_explanation": "The highlighted region covers the seat cushions.",
     "human_answer": "No",
-    "human_explanation": "It is the support box under the cushion."
+    "human_explanation": "It is the support box under the cushion.",
+    "keys": {
+      "claim": [
+        "seat cushion"
+      ],
+      "model": [
+        "covers the seat cushions"
+      ],
+      "human": [
+        "support box under the cushion"
+      ]
+    }
   },
   {
     "id": "G05",
@@ -72,7 +117,18 @@
     "model_answer": "Yes",
     "model_explanation": "The blue cushion rests against the red backrest.",
     "human_answer": "No",
-    "human_explanation": "The two parts do not directly touch."
+    "human_explanation": "The two parts do not directly touch.",
+    "keys": {
+      "claim": [
+        "directly touches"
+      ],
+      "model": [
+        "rests against"
+      ],
+      "human": [
+        "do not directly touch"
+      ]
+    }
   },
   {
     "id": "G06",
@@ -87,7 +143,18 @@
     "model_answer": "Yes",
     "model_explanation": "It is a raised control suitable for pressing.",
     "human_answer": "No",
-    "human_explanation": "It is a dial for grasping or turning, not pressing."
+    "human_explanation": "It is a dial for grasping or turning, not pressing.",
+    "keys": {
+      "claim": [
+        "suitable for pressing"
+      ],
+      "model": [
+        "raised control suitable for pressing"
+      ],
+      "human": [
+        "dial for grasping or turning"
+      ]
+    }
   },
   {
     "id": "G07",
@@ -102,13 +169,25 @@
     "model_answer": "Yes",
     "model_explanation": "The jaws straddle the object with opposing contacts.",
     "human_answer": "No",
-    "human_explanation": "The jaws are on adjacent sides and will slip."
+    "human_explanation": "The jaws are on adjacent sides and will slip.",
+    "keys": {
+      "claim": [
+        "valid"
+      ],
+      "model": [
+        "opposing contacts"
+      ],
+      "human": [
+        "adjacent sides",
+        "will slip"
+      ]
+    }
   },
   {
     "id": "G08",
     "task": "Identity Preservation",
     "title": "Identity changes are mistaken for expression changes.",
-    "claim": "The edit preserves the 3D asset\u2019s identity.",
+    "claim": "The edit preserves the 3D asset’s identity.",
     "prediction": "Yes. Changes in expression do not alter its identity.",
     "reference": "No. Fuller lower face; rounder, wider chin.",
     "image": "assets/gallery-08.webp",
@@ -117,22 +196,46 @@
     "model_answer": "Yes",
     "model_explanation": "Changes in expression do not alter its identity.",
     "human_answer": "No",
-    "human_explanation": "Fuller lower face; rounder, wider chin."
+    "human_explanation": "Fuller lower face; rounder, wider chin.",
+    "keys": {
+      "claim": [
+        "preserves the 3D asset’s identity"
+      ],
+      "model": [
+        "do not alter its identity"
+      ],
+      "human": [
+        "Fuller lower face",
+        "rounder, wider chin"
+      ]
+    }
   },
   {
     "id": "G09",
     "task": "Fine-grained Geometry",
     "title": "Local geometry is overlooked across views.",
     "claim": "The generated 3D asset matches the reference geometry.",
-    "prediction": "Yes. It closely matches the reference\u2019s main geometry.",
+    "prediction": "Yes. It closely matches the reference’s main geometry.",
     "reference": "No. The middle bulges; reference sides are straighter.",
     "image": "assets/gallery-09.webp",
     "source": "Figure 5, example 9; Appendix H.6",
     "source_sample_id": null,
     "model_answer": "Yes",
-    "model_explanation": "It closely matches the reference\u2019s main geometry.",
+    "model_explanation": "It closely matches the reference’s main geometry.",
     "human_answer": "No",
-    "human_explanation": "The middle bulges; reference sides are straighter."
+    "human_explanation": "The middle bulges; reference sides are straighter.",
+    "keys": {
+      "claim": [
+        "matches the reference geometry"
+      ],
+      "model": [
+        "closely matches"
+      ],
+      "human": [
+        "middle bulges",
+        "sides are straighter"
+      ]
+    }
   },
   {
     "id": "G10",
@@ -147,6 +250,17 @@
     "model_answer": "Yes",
     "model_explanation": "It draws its forelimbs inward into a still sleeping pose.",
     "human_answer": "No",
-    "human_explanation": "The right forelimb and muzzle merge into one mass."
+    "human_explanation": "The right forelimb and muzzle merge into one mass.",
+    "keys": {
+      "claim": [
+        "naturally falls asleep"
+      ],
+      "model": [
+        "still sleeping pose"
+      ],
+      "human": [
+        "merge into one mass"
+      ]
+    }
   }
 ]

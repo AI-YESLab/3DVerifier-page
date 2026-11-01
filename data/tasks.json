@@ -7,7 +7,15 @@
     "answer": true,
     "explanation": "Two seated figures.",
     "image": "assets/task-object.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "Two teddy bears"
+      ],
+      "explanation": [
+        "Two seated figures"
+      ]
+    }
   },
   {
     "name": "Part",
@@ -17,7 +25,15 @@
     "answer": true,
     "explanation": "Two oval openings.",
     "image": "assets/task-part.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "Oval finger loops"
+      ],
+      "explanation": [
+        "Two oval openings"
+      ]
+    }
   },
   {
     "name": "Material",
@@ -27,7 +43,15 @@
     "answer": true,
     "explanation": "Blue decoration.",
     "image": "assets/task-material.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "Blue-on-white pattern"
+      ],
+      "explanation": [
+        "Blue decoration"
+      ]
+    }
   },
   {
     "name": "Part Grounding",
@@ -37,7 +61,15 @@
     "answer": true,
     "explanation": "The lens region is marked in red.",
     "image": "assets/task-grounding.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "the lens"
+      ],
+      "explanation": [
+        "lens region"
+      ]
+    }
   },
   {
     "name": "Part Relation",
@@ -47,7 +79,15 @@
     "answer": false,
     "explanation": "The armrests are parallel.",
     "image": "assets/task-relation.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "perpendicular"
+      ],
+      "explanation": [
+        "parallel"
+      ]
+    }
   },
   {
     "name": "Affordance Region",
@@ -57,7 +97,15 @@
     "answer": true,
     "explanation": "The curved handle can be grasped.",
     "image": "assets/task-affordance.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "can be grasped"
+      ],
+      "explanation": [
+        "curved handle"
+      ]
+    }
   },
   {
     "name": "Grasp Validity",
@@ -67,7 +115,15 @@
     "answer": true,
     "explanation": "The jaws oppose across the body.",
     "image": "assets/task-grasp.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "valid"
+      ],
+      "explanation": [
+        "jaws oppose across the body"
+      ]
+    }
   },
   {
     "name": "Identity Preservation",
@@ -77,7 +133,15 @@
     "answer": false,
     "explanation": "The edited face has a wider lower face.",
     "image": "assets/task-identity.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "preserves identity"
+      ],
+      "explanation": [
+        "wider lower face"
+      ]
+    }
   },
   {
     "name": "Fine-grained Geometry",
@@ -87,7 +151,15 @@
     "answer": false,
     "explanation": "The housing narrows inward.",
     "image": "assets/task-finegeo.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "matches the reference geometry"
+      ],
+      "explanation": [
+        "narrows inward"
+      ]
+    }
   },
   {
     "name": "Motion Understanding",
@@ -97,6 +169,14 @@
     "answer": true,
     "explanation": "Takeoff, flight, and landing.",
     "image": "assets/task-motion.webp",
-    "source": "Figure 3, p.5"
+    "source": "Figure 3, p.5",
+    "keys": {
+      "claim": [
+        "Jump forward and land"
+      ],
+      "explanation": [
+        "Takeoff, flight, and landing"
+      ]
+    }
   }
 ]

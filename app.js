@@ -1,7 +1,8 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const state = { gallery: [], galleryIndex: 0, tasks: [], taskIndex: 0, results: null, identityTimer: null, n21Group: false };
-const json = async name => { const r = await fetch(`data/${name}.json`); if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); };
+const DATA_VERSION = '20261101-keys';
+const json = async name => { const r = await fetch(`data/${name}.json?v=${DATA_VERSION}`); if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); };
 
 // The image dialog uses the same original asset, never a generated replacement.
 function enlarge(src, caption, alt) {
@@ -54,8 +55,8 @@ function showTask(index) {
   chooseTab($('task-buttons'),button); $('task-panel').setAttribute('aria-labelledby',button.id);
   $('task-name').textContent = task.name; $('task-count').textContent = `${task.count} EXAMPLES`;
   $('task-image').src = task.image; $('task-image').alt = `${task.name} example: ${task.claim}`;
-  $('task-claim').innerHTML = highlightClaim(task.claim); $('task-answer').textContent = task.answer ? 'True' : 'False';
-  $('task-answer').className = task.answer ? 'correct' : 'incorrect'; $('task-explanation').textContent = task.explanation;
+  $('task-claim').innerHTML = highlightClaim(task.claim, task.keys?.claim); $('task-answer').textContent = task.answer ? 'True' : 'False';
+  $('task-answer').className = task.answer ? 'correct' : 'incorrect'; $('task-explanation').innerHTML = markKeys(task.explanation, task.keys?.explanation, 'key-right');
 }
 // Give every case a full reading interval after interaction or returning to view.
 function startAutoRotation(region, advance) {
@@ -81,13 +82,15 @@ function startAutoRotation(region, advance) {
   observer.observe(region);
 }
 const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-const highlightClaim = value => escapeHTML(value).replace(/highlighted region/gi, '<span class="claim-highlight">$&</span>');
+// Key phrases: blue = what the requirement checks, red = the model's mistake, green = what is actually there.
+const markKeys = (value, keys, cls) => (keys || []).reduce((html, key) => html.replace(escapeHTML(key), `<mark class="${cls}">${escapeHTML(key)}</mark>`), escapeHTML(value));
+const highlightClaim = (value, keys) => markKeys(value, keys, 'key-claim').replace(/highlighted region/gi, '<span class="claim-highlight">$&</span>');
 function fieldLabel(name) {
   const file = name === 'Requirement' ? 'requirement.png' : `${name.toLowerCase()}.svg`;
   return `<span class="field-label"><img src="assets/icons/${file}" alt="" width="18" height="18">${name}</span>`;
 }
-function responseMarkup(name, icon, answer, explanation, correct) {
-  return `<div class="example-response"><h4><img src="assets/icons/${icon}.svg" alt="" width="24" height="24">${name}</h4><div class="answer-field">${fieldLabel('Answer')}<strong class="${correct ? 'correct' : 'incorrect'}">${escapeHTML(answer)}<span class="judgment-mark" role="img" aria-label="${correct ? 'Correct' : 'Incorrect'} judgment">${correct ? '✓' : '✕'}</span></strong></div><div class="explanation-field">${fieldLabel('Explanation')}<p>${escapeHTML(explanation)}</p></div></div>`;
+function responseMarkup(name, icon, answer, explanation, correct, keys) {
+  return `<div class="example-response"><h4><img src="assets/icons/${icon}.svg" alt="" width="24" height="24">${name}</h4><div class="answer-field">${fieldLabel('Answer')}<strong class="${correct ? 'correct' : 'incorrect'}">${escapeHTML(answer)}<span class="judgment-mark" role="img" aria-label="${correct ? 'Correct' : 'Incorrect'} judgment">${correct ? '✓' : '✕'}</span></strong></div><div class="explanation-field">${fieldLabel('Explanation')}<p>${markKeys(explanation, keys, correct ? 'key-right' : 'key-wrong')}</p></div></div>`;
 }
 function renderCarousel(gallery) {
   state.gallery = gallery;
@@ -97,7 +100,7 @@ function renderCarousel(gallery) {
     slide.className = 'failure-slide'; slide.id = `failure-${item.id}`;
     slide.setAttribute('role','group'); slide.setAttribute('aria-roledescription','slide');
     slide.setAttribute('aria-label',`${i + 1} of ${gallery.length}: ${item.task}`);
-    slide.innerHTML = `<div class="failure-slide-heading"><span class="case-index">${String(i + 1).padStart(2,'0')}</span><h3>${escapeHTML(item.task)}</h3><p>${escapeHTML(item.title)}</p></div><div class="failure-slide-grid"><button class="failure-evidence" aria-label="Enlarge ${escapeHTML(item.task)} evidence"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.task + ' evidence. ' + item.human_explanation)}" loading="eager"><span>View evidence full size ↗</span></button><div class="failure-slide-copy"><div class="requirement-field">${fieldLabel('Requirement')}<p>${highlightClaim(item.claim)}</p></div><div class="response-pair">${responseMarkup('GPT-6 Astra','astra',item.model_answer,item.model_explanation,false)}${responseMarkup('Human reference','human',item.human_answer,item.human_explanation,true)}</div></div></div>`;
+    slide.innerHTML = `<div class="failure-slide-heading"><span class="case-index">${String(i + 1).padStart(2,'0')}</span><h3>${escapeHTML(item.task)}</h3><p>${escapeHTML(item.title)}</p></div><div class="failure-slide-grid"><button class="failure-evidence" aria-label="Enlarge ${escapeHTML(item.task)} evidence"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.task + ' evidence. ' + item.human_explanation)}" loading="eager"><span>View evidence full size ↗</span></button><div class="failure-slide-copy"><div class="requirement-field">${fieldLabel('Requirement')}<p>${highlightClaim(item.claim, item.keys?.claim)}</p></div><div class="response-pair">${responseMarkup('GPT-6 Astra','astra',item.model_answer,item.model_explanation,false,item.keys?.model)}${responseMarkup('Human reference','human',item.human_answer,item.human_explanation,true,item.keys?.human)}</div></div></div>`;
     slide.querySelector('.failure-evidence').addEventListener('click', () => enlarge(item.image,`${item.task} — ${item.source}. ${item.reference}`,`${item.task} evidence`));
     track.append(slide);
     const dot = document.createElement('button'); dot.type = 'button';
@@ -157,8 +160,10 @@ function renderRanking(metric) {
   sorted.forEach(m => $('ranking-chart').append(bar(m.name,m[metric],m.name === 'GPT-6 Astra' ? 'astra' : '')));
   const descriptions = {overall:'Overall accuracy (OA): mean task-level balanced accuracy.',explanation:'ExpOA additionally checks the reference-semantic validity of rejection explanations.',triplet:'All three linked answers must be correct: true anchor, Spec-CF, and Cand-CF. 615 complete triplets.',expTriplet:'All three linked answers must be correct and both negative explanations must pass. 615 complete triplets.'};
   $('metric-description').textContent = descriptions[metric];
+  $('chart-title').textContent = {overall:'Overall accuracy',explanation:'Explanation-aware accuracy',triplet:'Triplet consistency',expTriplet:'Explanation-aware triplets'}[metric];
 }
-$('metric-select').addEventListener('change',e => renderRanking(e.target.value));
+document.querySelectorAll('[data-metric]').forEach(b => b.addEventListener('click', () => { chooseTab(b.parentElement,b); renderRanking(b.dataset.metric); }));
+tabKeyboard($('metric-tabs'));
 function renderSelection(metric) {
   if (!state.results) return;
   $('selection-chart').replaceChildren();
@@ -190,6 +195,7 @@ $('n21-play').addEventListener('click',async () => {
   catch { stopN21(); $('n21-play').textContent = 'Retry playback'; }
 });
 n21Videos.forEach(v => v.addEventListener('pause', () => { if (state.n21Group) stopN21(); }));
+n21Videos.forEach(v => v.addEventListener('click', () => { if (state.n21Group) return stopN21(); v.paused ? v.play() : v.pause(); }));
 document.addEventListener('visibilitychange', () => { if (document.hidden) { stopIdentity(); stopN21(); pauseOtherMedia(); } });
 const mediaVisibility = new IntersectionObserver(entries => entries.forEach(entry => {
   if (!entry.isIntersecting) { if (entry.target.id === 'identity-toggle') stopIdentity(); else if (entry.target.classList.contains('n21-video')) { if (window.innerWidth > 680) stopN21(); else entry.target.pause(); } else entry.target.pause(); }
